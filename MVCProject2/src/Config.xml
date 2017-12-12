@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!-- Connection (getConnection(), disConnection())를 만들어주고 들어간다! -->
+<configuration>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC"/>	
+			<!-- 
+				JDBC(자바) = COMMIT, ROLLBACK
+				MANAGED(관리자가 관리) 
+			-->
+			<dataSource type="POOLED">
+			<!-- 
+				DataSource : 데이터의 모든 정보를 가지고 있는 클래스
+				  driver,url,username,password,maxActive...
+				type
+				  POOLED : DBCP
+				  UNPOOLED : DAO
+				  JNDI : 미리 설정(외부)
+			 -->
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
+				<property name="url" value="jdbc:oracle:thin:@localhost:1521:ORCL"/>
+				<property name="username" value="scott"/>
+				<property name="password" value="1234"/>
+				<!-- maxActive=8, maxIdle=8   default값이 8/8 -->
+			</dataSource>
+		</environment>
+	</environments>
+</configuration>
